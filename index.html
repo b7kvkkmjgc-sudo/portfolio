@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean SHI — 雇主品牌专家</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #003d6b;
+            --primary-light: #005a9e;
+            --accent: #00a3e0;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-card: #ffffff;
+            --border: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .name-en {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .tagline {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tagline em {
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Hero Numbers */
+        .hero-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .number-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .number-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .number-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.25rem;
+        }
+
+        .number-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .number-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Section */
+        section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.75rem;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-light);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .timeline-year {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-industry {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-companies {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        /* Novartis Fit */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .fit-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .fit-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .fit-desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        /* Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 100px;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: all 0.2s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .tag.quote {
+            border-style: dashed;
+            font-style: italic;
+        }
+
+        /* Traits Grid */
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .trait-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .trait-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .trait-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .trait-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .trait-desc {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .number-value {
+                font-size: 2.5rem;
+            }
+
+            .hero-numbers {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .number-card,
+            .skill-item,
+            .fit-card,
+            .trait-card {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .tag:hover {
+                transform: none;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Jean SHI</h1>
+            <p class="tagline">
+                <em>专注雇主品牌9年</em>，从旅游度假、主题乐园到科技健康<br>
+                翻译语言，更翻译信任机制
+            </p>
+        </header>
+
+        <section class="hero-numbers">
+            <div class="number-card animate delay-1">
+                <div class="number-line">
+                    <span class="number-value">12</span>
+                    <span class="number-text">年职场经验</span>
+                </div>
+            </div>
+            <div class="number-card animate delay-2">
+                <div class="number-line">
+                    <span class="number-value">9</span>
+                    <span class="number-text">年专注在EB</span>
+                </div>
+            </div>
+            <div class="number-card animate delay-3">
+                <div class="number-line">
+                    <span class="number-value">3</span>
+                    <span class="number-text">个行业纵深</span>
+                </div>
+            </div>
+            <div class="number-card animate delay-4">
+                <div class="number-line">
+                    <span class="number-value">5</span>
+                    <span class="number-text">国市场落地</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">核心能力</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">全球EVP本地化</div>
+                    <div class="skill-desc">将全球雇主价值主张翻译为本土候选人有共鸣的内容</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">员工故事叙事</div>
+                    <div class="skill-desc">真实员工故事驱动的内容策略，互动提升约30%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">跨文化Stakeholder管理</div>
+                    <div class="skill-desc">Global框架与本地执行的平衡，多方利益相关者协调</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">EB理论体系构建</div>
+                    <div class="skill-desc">Minchington/Mosley理论框架与实践经验融合</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">从0到1的开拓</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">首支HR/EB视频</div>
+                    <div class="skill-desc">在迪士尼制作团队首支雇主品牌视频，从无到有，建立影像叙事标准</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">首个社交媒体账号</div>
+                    <div class="skill-desc">裸心集团微信粉丝从148增长到7,480，零预算冷启动</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">首个亚太地区跨国Campaign</div>
+                    <div class="skill-desc">在默克主导首个覆盖亚太多国的招聘营销campaign</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">首套可复用内容机制</div>
+                    <div class="skill-desc">在默克亚太与中国区建立从集团总部到重要市场的标准化内容生产与分发机制</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">行业纵深</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2012 - 2016</div>
+                    <div class="timeline-industry">酒店与度假区</div>
+                    <div class="timeline-companies">喜达屋集团 → 裸心集团<br>市场营销与品牌宣传 → 人才传播</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2018 - 2022</div>
+                    <div class="timeline-industry">主题娱乐</div>
+                    <div class="timeline-companies">上海迪士尼<br>雇主品牌，带团队，跟美国CoE协作</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2022 - 2024</div>
+                    <div class="timeline-industry">医药健康 · 生命科学 · 电子科技</div>
+                    <div class="timeline-companies">默克集团（Merck KGaA）<br>跨国协作，理解使命驱动型企业的运作逻辑</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">与诺华的适配</h2>
+            <div class="fit-grid">
+                <div class="fit-card">
+                    <div class="fit-title">医药行业经验</div>
+                    <div class="fit-desc">在默克覆盖医药健康、生命科学、电子科技三大业务，理解使命驱动型企业的运作逻辑</div>
+                </div>
+                <div class="fit-card">
+                    <div class="fit-title">Unbossed文化共鸣</div>
+                    <div class="fit-desc">在默克推动的"员工自主叙事"与诺华Unbossed理念一脉相承</div>
+                </div>
+                <div class="fit-card">
+                    <div class="fit-title">Career Lattice理解</div>
+                    <div class="fit-desc">认可横向发展价值——从市场、销售到人才吸引、雇主品牌，多元路径构建复合视角</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">差异化特质</h2>
+            <div class="traits-grid">
+                <div class="trait-card">
+                    <div class="trait-icon">🎯</div>
+                    <div class="trait-title">高成熟度</div>
+                    <div class="trait-desc">12年职场历练，横跨4个行业，经历完整职业周期，具备全局视野与独立判断力</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🔄</div>
+                    <div class="trait-title">强适应力</div>
+                    <div class="trait-desc">每次跨行业转型都能快速产出，从酒店度假区到医药健康，无缝切换并持续创造价值</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🎨</div>
+                    <div class="trait-title">美感驱动</div>
+                    <div class="trait-desc">对视觉和叙事有敏锐感知，追求工作的质感与品位，让专业内容兼具理性与美感</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🔗</div>
+                    <div class="trait-title">理论↔实践翻译者</div>
+                    <div class="trait-desc">能将EB理论体系落地为可执行方案，也能从实践中提炼方法论，形成可复用框架</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">💭</div>
+                    <div class="trait-title">深度反思者</div>
+                    <div class="trait-desc">持续复盘迭代，不停留在表面答案，追求把事情做透、做对</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🤝</div>
+                    <div class="trait-title">Stakeholder高感知</div>
+                    <div class="trait-desc">跨文化协作中精准把握各方需求，在复杂组织中建立信任、推动共识</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>本页面为面试展示用 · 2026年8月</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple intersection observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.skill-item, .timeline-item, .fit-card, .trait-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

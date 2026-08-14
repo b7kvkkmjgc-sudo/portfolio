@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean SHI — Employer Branding Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #003d6b;
+            --primary-light: #005a9e;
+            --accent: #00a3e0;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-card: #ffffff;
+            --border: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .name-en {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .tagline {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tagline em {
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Hero Numbers */
+        .hero-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .number-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .number-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .number-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.25rem;
+        }
+
+        .number-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .number-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Section */
+        section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.75rem;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-light);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .timeline-year {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-industry {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-companies {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        /* Novartis Fit */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .fit-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .fit-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .fit-desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        /* Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 100px;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: all 0.2s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .tag.quote {
+            border-style: dashed;
+            font-style: italic;
+        }
+
+        /* Traits Grid */
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .trait-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .trait-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .trait-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .trait-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .trait-desc {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .number-value {
+                font-size: 2.5rem;
+            }
+
+            .hero-numbers {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .number-card,
+            .skill-item,
+            .fit-card,
+            .trait-card {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .tag:hover {
+                transform: none;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Jean SHI</h1>
+            <p class="tagline">
+                Translating languages — and, more importantly, trust
+            </p>
+        </header>
+
+        <section class="hero-numbers">
+            <div class="number-card animate delay-1">
+                <div class="number-line">
+                    <span class="number-value">12</span>
+                    <span class="number-text">Years of Experience</span>
+                </div>
+            </div>
+            <div class="number-card animate delay-2">
+                <div class="number-line">
+                    <span class="number-value">9</span>
+                    <span class="number-text">Years in EB</span>
+                </div>
+            </div>
+            <div class="number-card animate delay-3">
+                <div class="number-line">
+                    <span class="number-value">4</span>
+                    <span class="number-text">Industries</span>
+                </div>
+            </div>
+            <div class="number-card animate delay-4">
+                <div class="number-line">
+                    <span class="number-value">5</span>
+                    <span class="number-text">Markets</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Global EVP Localisation</div>
+                    <div class="skill-desc">Translating global employer value propositions into content that resonates with local candidates</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Storytelling</div>
+                    <div class="skill-desc">Authentic content strategies covering interns, frontline employees and professionals, boosting engagement by ~30%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Cross-Cultural Stakeholder Management</div>
+                    <div class="skill-desc">Balancing global frameworks with local execution; coordinating across multiple stakeholders</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Theory to Practice</div>
+                    <div class="skill-desc">Bridging Minchington &amp; Mosley frameworks with hands-on execution across markets</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Zero-to-One Track Record</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">The First Visual Story</div>
+                    <div class="skill-desc">Created the first-ever employer brand video at Shanghai Disney Resort from scratch and raised the engagement rate by 40%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">First Social Media Presence</div>
+                    <div class="skill-desc">Grew the WeChat followers of naked Group from 148 to 7,480 — zero-budget cold start</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">First Cross-National Campaign</div>
+                    <div class="skill-desc">Led Merck's first multi-national recruitment marketing campaign in 4 markets</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">New Early-Talent Engagement Experience</div>
+                    <div class="skill-desc">Built new campus talk assets from validated EVP for Shanghai Disney Resort, including content, standard rundown, and themed giveaways</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Industry Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2012 – 2016</div>
+                    <div class="timeline-industry">Hospitality &amp; Resorts</div>
+                    <div class="timeline-companies">Starwood Hotels → naked Group<br>Marketing &amp; Brand Communications → Talent Communications</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2018 – 2022</div>
+                    <div class="timeline-industry">Theme Entertainment</div>
+                    <div class="timeline-companies">Shanghai Disney Resort<br>Employer Branding · Team Lead · Collaboration with US-based CoE</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2022 – 2024</div>
+                    <div class="timeline-industry">Healthcare · Life Science · Electronics</div>
+                    <div class="timeline-companies">Merck Group (Merck KGaA, Darmstadt, Germany)<br>Cross-border collaboration · Mission-driven enterprise operations</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Why Novartis</h2>
+            <div class="fit-grid">
+                <div class="fit-card">
+                    <div class="fit-title">Pharma Industry Experience</div>
+                    <div class="fit-desc">Covered Healthcare, Life Science, and Electronics at Merck — understand the operating logic of purpose-driven organisations</div>
+                </div>
+                <div class="fit-card">
+                    <div class="fit-title">Unbossed Culture Alignment</div>
+                    <div class="fit-desc">Championed "employee-led storytelling" at Merck — naturally aligned with Novartis' Unbossed philosophy</div>
+                </div>
+                <div class="fit-card">
+                    <div class="fit-title">Career Lattice Mindset</div>
+                    <div class="fit-desc">Believe in the value of lateral growth — from marketing &amp; sales to talent attraction &amp; employer branding, building a compound perspective through diverse paths</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Differentiators</h2>
+            <div class="traits-grid">
+                <div class="trait-card">
+                    <div class="trait-icon">🎯</div>
+                    <div class="trait-title">High Maturity</div>
+                    <div class="trait-desc">12 years across 4 industries, full career cycles — seasoned judgement and a holistic perspective</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🔄</div>
+                    <div class="trait-title">Rapid Adaptability</div>
+                    <div class="trait-desc">Every cross-industry transition delivered results fast — from hospitality to healthcare, seamless and continuous</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🎨</div>
+                    <div class="trait-title">Aesthetics-Driven</div>
+                    <div class="trait-desc">Sharp eye for visual and narrative quality — making professional content both rigorous and beautiful</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🔗</div>
+                    <div class="trait-title">Theory ↔ Practice Translator</div>
+                    <div class="trait-desc">Turn EB theory into executable plans; distil practice into reusable frameworks</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">💭</div>
+                    <div class="trait-title">Deep Reflector</div>
+                    <div class="trait-desc">Continuous iteration beyond surface answers — committed to getting things right, not just done</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🤝</div>
+                    <div class="trait-title">Stakeholder Sensitivity</div>
+                    <div class="trait-desc">Precisely read and balance diverse needs across cultures — building trust and driving consensus in complex organisations</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Interview Portfolio · August 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple intersection observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.skill-item, .timeline-item, .fit-card, .trait-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
